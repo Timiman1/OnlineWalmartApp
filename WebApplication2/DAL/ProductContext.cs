@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace WebApplication2.DAL
+namespace OnlineWalmart.DAL
 {
     public class ProductContext : DbContext
     {
 
-        DbSet<IProduct> Products { get; set; }
+        DbSet<Product> Products { get; set; }
 
         public ProductContext(DbContextOptions options) : base(options)
         {

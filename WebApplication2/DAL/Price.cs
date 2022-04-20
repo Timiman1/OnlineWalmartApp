@@ -1,16 +1,10 @@
 ﻿namespace OnlineWalmart.DAL
 {
-    public class Price
+    public interface IPrice
     {
-        public double Value { get; set; }
+        double Value { get; set; }
 
-        public double GetDiscountedPrice(double percentage)
-        {
-            return Value * percentage / 100.0;
-        }
-        public void SetDiscountedPrice(double percentage)
-        {
-            Value = Value * percentage / 100.0;
-        }
+        double Discount { get; set; } 
+        double DiscountedValue { get; set; }
     }
 }
