@@ -2,9 +2,9 @@
 {
     public abstract class Product
     {
-        public abstract string Name { get; }
-        public abstract string Description { get; }
-        public abstract IPrice Price { get; }
-        public abstract string DeliveryInfo { get; }
+        public virtual string Name { get; }
+        public virtual string Description { get; }
+        public virtual IPrice Price { get; }
+        public virtual string DeliveryInfo { get; }
     }
 }
