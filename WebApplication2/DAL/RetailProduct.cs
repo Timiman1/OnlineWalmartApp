@@ -1,8 +1,8 @@
 ﻿namespace OnlineWalmart.DAL
 {
-    public abstract class RetailProduct : Product
+    public sealed class RetailProduct : Product
     {
-        protected RetailProduct(string name, string description, IPrice price) : base(name, description, price)
+        protected RetailProduct(string name, string description, Price price) : base(name, description, price)
         {
         }
 
