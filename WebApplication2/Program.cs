@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using WebApplication2.DAL;
+using OnlineWalmart.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
 
