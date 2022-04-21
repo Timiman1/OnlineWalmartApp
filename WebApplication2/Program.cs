@@ -1,6 +1,8 @@
 global using OnlineWalmart.DAL;
 global using OnlineWalmart.DAL.Entities;
 global using OnlineWalmart.DAL.Contexts;
+global using OnlineWalmart.DAL.Interfaces;
+global using OnlineWalmart.DAL.Repositories;
 
 using Microsoft.EntityFrameworkCore;
 using Ocelot.DependencyInjection;
@@ -16,6 +18,7 @@ builder.Services.AddDbContext<ProductContext>(options =>
 // Add services to the container.
 //builder.Configuration.AddJsonFile("ocelot.json");
 
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,6 +28,13 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddOcelot();
 
 var app = builder.Build();
+
+using (var scope = ((IApplicationBuilder)app).ApplicationServices.GetService<IServiceScopeFactory>()!.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ProductContext>();
+    await context.Database.EnsureDeletedAsync();
+    await context.Database.EnsureCreatedAsync();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
