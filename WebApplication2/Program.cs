@@ -1,13 +1,9 @@
-global using OnlineWalmart.DAL;
 global using OnlineWalmart.DAL.Entities;
 global using OnlineWalmart.DAL.Contexts;
 global using OnlineWalmart.DAL.Interfaces;
 global using OnlineWalmart.DAL.Repositories;
 
 using Microsoft.EntityFrameworkCore;
-using Ocelot.DependencyInjection;
-using Ocelot.Middleware;
-using OnlineWalmart.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
 
