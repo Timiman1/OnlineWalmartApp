@@ -10,5 +10,10 @@ namespace OnlineWalmart.DAL
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>().OwnsOne(p => p.Price);
+        }
     }
 }

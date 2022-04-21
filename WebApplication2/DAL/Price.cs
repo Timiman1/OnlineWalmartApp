@@ -2,15 +2,8 @@
 {
     public class Price
     {
-        double Value { get; }
-        double Discount { get; } 
-        double DiscountedValue { get; }
-
-        public Price(double value, double discount)
-        {
-            Value = value;
-            Discount = discount;
-            DiscountedValue = value * (discount / 100.0);
-        }
+        public double Value { get; }
+        public double Discount { get; }
+        public double DiscountedValue => Value * Discount / 100.0;
     }
 }
