@@ -1,10 +1,12 @@
 ﻿namespace OnlineWalmart.DAL
 {
-    public abstract class Product
+    public class Product
     {
-        public virtual string Name { get; }
-        public virtual string Description { get; }
-        public virtual Price Price { get; }
-        public virtual string DeliveryInfo { get; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; }
+        public double Discount { get; set; }
+        public string DeliveryInfo { get; set; }
     }
 }

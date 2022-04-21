@@ -2,13 +2,17 @@
 {
     public class DiscountCodeValidator
     {
-        public bool Validate(string code, DiscountCode[] validCodes, out DiscountCode? output)
+        public bool Validate(string code, DiscountCode[] validCodes, Product productToDiscount)
         {
-            output = validCodes.FirstOrDefault(c => c.Code == code);
+            var discountCode = validCodes.FirstOrDefault(c => c.Code == code);
 
-            if (output == null)
+            if (discountCode == null)
                 return false;
-            return true;
+            else
+            {
+                productToDiscount.Discount = discountCode.Discount;
+                return true;
+            }
         }
     }
 }
