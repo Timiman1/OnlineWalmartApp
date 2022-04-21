@@ -1,3 +1,7 @@
+global using OnlineWalmart.DAL;
+global using OnlineWalmart.DAL.Entities;
+global using OnlineWalmart.DAL.Contexts;
+
 using Microsoft.EntityFrameworkCore;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
