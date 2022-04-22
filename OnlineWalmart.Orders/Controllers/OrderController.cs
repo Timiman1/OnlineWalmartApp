@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineWalmart.Orders.DAL;
 using OnlineWalmart.Orders.DAL.Context;
 using OnlineWalmart.Orders.DAL.DTO;
 using OnlineWalmart.Orders.DAL.Entities;
@@ -13,7 +14,12 @@ namespace OnlineWalmart.Orders.Controllers
     {
         private readonly IOrderRepository _orderRepository;
         private readonly OrderContext _context;
-
+        DiscountCode[] discountCodes = new DiscountCode[]
+        {
+            new DiscountCode("DISCOUNT5", 5),
+            new DiscountCode("DISCOUNT10", 10),
+            new DiscountCode("DISCOUNT50", 50),
+        };
         public OrderController(IOrderRepository orderStorage, OrderContext context)
         {
             _orderRepository = orderStorage;
@@ -82,8 +88,9 @@ namespace OnlineWalmart.Orders.Controllers
                     ProductId = orderModel.ProductId,
                     UserId = orderModel.UserId,
                     DateOfPurchase = orderModel.DateOfPurchase,
-                    DiscountInPercent = orderModel.DiscountInPercent
                 };
+
+                new DiscountCodeValidator().Validate(orderModel.DiscountCode, discountCodes, orderEntity);
 
                 if (await _orderRepository.AddNewOrderAsync(orderEntity))
                 {
