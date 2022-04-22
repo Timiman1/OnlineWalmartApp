@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineWalmart.Orders.DAL.Context;
+using OnlineWalmart.Orders.DAL.DTO;
 using OnlineWalmart.Orders.DAL.Entities;
 using OnlineWalmart.Orders.DAL.Interfaces;
+using System.Text.Json;
 
 namespace OnlineWalmart.Orders.Controllers
 {
@@ -36,24 +38,75 @@ namespace OnlineWalmart.Orders.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ICollection<Order>>> AddOrder(Order order)
+        public async Task<ActionResult<ICollection<Order>>> AddOrder(OrderModelForPosting orderModel)
         {
             try
             {
-                if (await _orderRepository.AddNewOrderAsync(order))
+                #region HttpClient
+
+                var userUrl = "https://localhost:7065/user";
+                var productUrl = "https://localhost:7065/product";
+
+                using var client = new HttpClient();
+
+                var userResponse = await client.GetAsync(userUrl);
+                var productResponse = await client.GetAsync(productUrl);
+
+                if (!userResponse.IsSuccessStatusCode)
+                    return NotFound();
+
+                if (!productResponse.IsSuccessStatusCode)
+                    return NotFound();
+
+                var userContent = await userResponse.Content.ReadAsStringAsync();
+                var productContent = await productResponse.Content.ReadAsStringAsync();
+
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                var users = JsonSerializer.Deserialize<ICollection<User>>(userContent, options);
+                var products = JsonSerializer.Deserialize<ICollection<Product>>(productContent, options);
+
+                #endregion
+
+                if (UserDoesNotExist(orderModel, users!))
+                    return StatusCode(500, "User cannot be found. User identity is not valid");
+
+                if (ProductDoesNotExist(orderModel, products!))
+                    return StatusCode(500, "Product cannot be found. Product identity is not valid");
+
+                var orderEntity = new Order
+                {
+                    ProductId = orderModel.ProductId,
+                    UserId = orderModel.UserId,
+                    DateOfPurchase = orderModel.DateOfPurchase,
+                    DiscountInPercent = orderModel.DiscountInPercent
+                };
+
+                if (await _orderRepository.AddNewOrderAsync(orderEntity))
                 {
                     if (!(await _context.SaveChangesAsync() > 0))
-                    {
                         return StatusCode(500, "Order could not be saved.");
-                    }
                 }
 
-                return StatusCode(201, order);
+                return StatusCode(201, orderEntity);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.InnerException!.Message);
             }
+        }
+
+        private static bool ProductDoesNotExist(OrderModelForPosting orderModel, ICollection<Product> products)
+        {
+            return !products!.Any(product => product.Id == orderModel.ProductId);
+        }
+
+        private static bool UserDoesNotExist(OrderModelForPosting orderModel, ICollection<User> users)
+        {
+            return !users!.Any(user => user.Id == orderModel.UserId);
         }
     }
 }
