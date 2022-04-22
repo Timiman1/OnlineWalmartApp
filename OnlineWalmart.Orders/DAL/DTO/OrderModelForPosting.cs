@@ -6,6 +6,5 @@ public class OrderModelForPosting
 {
     public Guid ProductId { get; set; }
     public Guid UserId { get; set; }
-    public DateTimeOffset DateOfPurchase { get; set; }
-    public string DiscountCode { get; set; }
+    public string DiscountCode { get; set; } = null!;
 }

@@ -87,7 +87,7 @@ namespace OnlineWalmart.Orders.Controllers
                 {
                     ProductId = orderModel.ProductId,
                     UserId = orderModel.UserId,
-                    DateOfPurchase = orderModel.DateOfPurchase,
+                    DateOfPurchase = new DateTimeOffset(DateTime.Now),
                 };
 
                 new DiscountCodeValidator().Validate(orderModel.DiscountCode, discountCodes, orderEntity);
