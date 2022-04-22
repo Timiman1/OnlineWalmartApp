@@ -28,11 +28,15 @@ using (var scope = ((IApplicationBuilder)app).ApplicationServices.GetService<ISe
     await context.Database.EnsureCreatedAsync();
 }
 
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(o => o.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 app.UseHttpsRedirection();
 
