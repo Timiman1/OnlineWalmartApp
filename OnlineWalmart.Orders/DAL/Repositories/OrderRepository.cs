@@ -1,4 +1,5 @@
-﻿using OnlineWalmart.Orders.DAL.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineWalmart.Orders.DAL.Context;
 using OnlineWalmart.Orders.DAL.Entities;
 using OnlineWalmart.Orders.DAL.Interfaces;
 
@@ -12,28 +13,30 @@ namespace OnlineWalmart.Orders.DAL.Repositories
         {
             _context = context;
         }
-        public Task<bool> AddNewOrderAsync(Order order)
+        public async Task<bool> AddNewOrderAsync(Order order)
         {
-            throw new NotImplementedException();
-            //try
-            //{
-            //    await _context.Orders.AddAsync();
-            //    return true;
-            //}
-            //catch
-            //{
-            //    return false;
-            //}
+            try
+            {
+                await _context.Orders.AddAsync(order);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public Task<ICollection<Order>> GetAllOrdersAsync()
+        public async Task<ICollection<Order>> GetAllOrdersAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Orders
+                .AsNoTracking()
+                .ToListAsync();
         }
 
-        public Task<Order> GetOrderByIdAsync(int id)
+        public async Task<Order> GetOrderByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Orders
+                .FirstOrDefaultAsync(user => user.Id == id) ?? null!;
         }
     }
 }

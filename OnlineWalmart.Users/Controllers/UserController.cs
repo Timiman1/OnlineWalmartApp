@@ -44,7 +44,7 @@ namespace ExerciseInDesignPatterns.Controllers
                 {
                     if (!(await _context.SaveChangesAsync() > 0))
                     {
-                        return StatusCode(500, "Course could not be saved.");
+                        return StatusCode(500, "User could not be saved.");
                     }
                 }
 

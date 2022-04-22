@@ -6,5 +6,6 @@ public class Order
     public Guid ProductId { get; set; }
     public Guid UserId { get; set; }
     public DateTimeOffset DateOfPurchase { get; set; }
+    
     public float DiscountInPercent { get; set; }
 }
