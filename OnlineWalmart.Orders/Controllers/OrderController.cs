@@ -20,6 +20,7 @@ namespace OnlineWalmart.Orders.Controllers
             new DiscountCode("DISCOUNT10", 10),
             new DiscountCode("DISCOUNT50", 50),
         };
+
         public OrderController(IOrderRepository orderStorage, OrderContext context)
         {
             _orderRepository = orderStorage;
@@ -76,6 +77,9 @@ namespace OnlineWalmart.Orders.Controllers
                 var products = JsonSerializer.Deserialize<ICollection<Product>>(productContent, options);
 
                 #endregion
+
+                if (UserDoesNotExist(orderModel, users!) && ProductDoesNotExist(orderModel, products!))
+                    return StatusCode(500, "User and product cannot be found. User and product identity not valid");
 
                 if (UserDoesNotExist(orderModel, users!))
                     return StatusCode(500, "User cannot be found. User identity is not valid");
