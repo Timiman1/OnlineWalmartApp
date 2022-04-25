@@ -33,10 +33,6 @@
           "Port": 7122
         }
       ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "products_auth_scheme",
-        "AllowedScopes": []
-      },
       "UpstreamPathTemplate": "/Product",
       "UpstreamHttpMethod": [ "Get", "Post" ]
     },
@@ -61,6 +57,10 @@
           "Port": 7028
         }
       ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "order_auth_scheme",
+        "AllowedScopes": []
+      },
       "UpstreamPathTemplate": "/Order",
       "UpstreamHttpMethod": [ "Get", "Post" ]
     },

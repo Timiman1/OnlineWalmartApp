@@ -14,13 +14,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddOcelot();
-builder.Services.AddAuthentication().AddJwtBearer("products_auth_scheme", options =>
+builder.Services.AddAuthentication().AddJwtBearer("order_auth_scheme", options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters()
     {
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("my_products_api_secret")),
-        ValidAudience = "productsAudience",
-        ValidIssuer = "productsIssuer",
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("my_order_api_secret")),
+        ValidAudience = "orderAudience",
+        ValidIssuer = "orderIssuer",
         ValidateIssuerSigningKey = true,
         ValidateLifetime = true,
         ClockSkew = TimeSpan.Zero

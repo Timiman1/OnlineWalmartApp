@@ -10,9 +10,9 @@ public class ProductsApiTokenService
 {
     public AuthToken GenerateToken(AuthUser user)
     {
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("my_products_api_secret"));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("my_order_api_secret"));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
-        var expirationDate = DateTime.UtcNow.AddMinutes(5);
+        var expirationDate = DateTime.UtcNow.AddMinutes(10);
 
         var claims = new[]
         {
@@ -20,8 +20,8 @@ public class ProductsApiTokenService
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
 
-        var token = new JwtSecurityToken(audience: "productsAudience",
-                                         issuer: "productsIssuer",
+        var token = new JwtSecurityToken(audience: "orderAudience",
+                                         issuer: "orderIssuer",
                                          claims: claims,
                                          expires: expirationDate,
                                          signingCredentials: credentials);

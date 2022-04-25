@@ -9,10 +9,10 @@ namespace OnelineWalmart.Auth.Controllers;
 public class AuthController : ControllerBase
 {
     [HttpPost]
-    [Route("products")]
+    [Route("order")]
     public ActionResult<AuthToken> GetProductsAuthentication(AuthUser user)
     {
-        if (user.Username != "products_user" || user.Password != "123")
+        if (user.Username != "order_user" || user.Password != "123")
         {
             return BadRequest(new { message = "Username or Password is invalid" });
         }
