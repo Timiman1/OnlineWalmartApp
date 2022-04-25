@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "Gateway\Gateway.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineWalmart.Orders", "OnlineWalmart.Orders\OnlineWalmart.Orders.csproj", "{7B34CBD7-AC7C-4CC5-A118-DA6C6242C391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnelineWalmart.Auth", "OnelineWalmart.Auth\OnelineWalmart.Auth.csproj", "{1559FD56-6DD4-4F60-82C2-2DD8093CEAA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineWalmart.Auth", "OnelineWalmart.Auth\OnlineWalmart.Auth.csproj", "{1559FD56-6DD4-4F60-82C2-2DD8093CEAA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
