@@ -17,3 +17,10 @@ Mikrotjänsterna (förutom gateway) har GET och POST endpoints.
 Upstream sökvägen för samtliga mikrotjänster kan hittas i ocelote.json
 
 Alla mikrotjänsterna är seedade med data, den enda mikrotjänsten som har authentication är orders där GET och POST är låst bakom JWT.
+
+**OBS. Databaser kommer att skapas så fort du startar programmet med namn
+WalmartProductDb -
+WalmartUserDb -
+WalmartOrderDb**
+
+**Du behöver inte göra en database update, det sker automatiskt vid körning**
