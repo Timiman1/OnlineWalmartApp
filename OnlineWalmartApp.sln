@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineWalmart.Users", "Onli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "Gateway\Gateway.csproj", "{E1AAA841-4BCF-48CE-A787-8744172DDA59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineWalmart.Orders", "OnlineWalmart.Orders\OnlineWalmart.Orders.csproj", "{7B34CBD7-AC7C-4CC5-A118-DA6C6242C391}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineWalmart.Orders", "OnlineWalmart.Orders\OnlineWalmart.Orders.csproj", "{7B34CBD7-AC7C-4CC5-A118-DA6C6242C391}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnelineWalmart.Auth", "OnelineWalmart.Auth\OnelineWalmart.Auth.csproj", "{1559FD56-6DD4-4F60-82C2-2DD8093CEAA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7B34CBD7-AC7C-4CC5-A118-DA6C6242C391}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B34CBD7-AC7C-4CC5-A118-DA6C6242C391}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B34CBD7-AC7C-4CC5-A118-DA6C6242C391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1559FD56-6DD4-4F60-82C2-2DD8093CEAA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1559FD56-6DD4-4F60-82C2-2DD8093CEAA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1559FD56-6DD4-4F60-82C2-2DD8093CEAA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1559FD56-6DD4-4F60-82C2-2DD8093CEAA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

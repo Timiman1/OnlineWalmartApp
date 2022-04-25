@@ -1,11 +1,7 @@
 using Microsoft.IdentityModel.Tokens;
-using Ocelot.DependencyInjection;
-using Ocelot.Middleware;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Configuration.AddJsonFile("ocelot.json");
 
 // Add services to the container.
 
@@ -13,7 +9,6 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddOcelot();
 builder.Services.AddAuthentication().AddJwtBearer("products_auth_scheme", options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters()
@@ -43,7 +38,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.UseOcelot().Wait();
 
 app.Run();
