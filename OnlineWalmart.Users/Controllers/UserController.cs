@@ -3,7 +3,7 @@ using OnlineWalmart.Users.Context;
 using OnlineWalmart.Users.DAL.Entities;
 using OnlineWalmart.Users.DAL.Interfaces;
 
-namespace ExerciseInDesignPatterns.Controllers
+namespace OnlineWalmart.Users.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
