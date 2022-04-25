@@ -18,6 +18,9 @@ Upstream sökvägen för samtliga mikrotjänster kan hittas i ocelote.json
 
 Alla mikrotjänsterna är seedade med data, den enda mikrotjänsten som har authentication är orders där GET och POST är låst bakom JWT.
 
+Användarnamnet för Auth enpoint är: order_user
+Lösenord: 123
+
 **OBS. Databaser kommer att skapas så fort du startar programmet med namn
 WalmartProductDb -
 WalmartUserDb -
