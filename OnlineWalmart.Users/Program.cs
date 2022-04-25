@@ -1,38 +1,33 @@
-global using OnlineWalmart.DAL.Entities;
-global using OnlineWalmart.DAL.Contexts;
-global using OnlineWalmart.DAL.Interfaces;
-global using OnlineWalmart.DAL.Repositories;
-
 using Microsoft.EntityFrameworkCore;
+using OnlineWalmart.Users.Context;
+using OnlineWalmart.Users.DAL.Interfaces;
+using OnlineWalmart.Users.DAL.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<ProductContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("TimsString"));
-});
 // Add services to the container.
-//builder.Configuration.AddJsonFile("ocelot.json");
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddDbContext<UserContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddControllers();
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.AddOcelot();
-
 var app = builder.Build();
 
+// Configure the HTTP request pipeline.
 using (var scope = ((IApplicationBuilder)app).ApplicationServices.GetService<IServiceScopeFactory>()!.CreateScope())
 {
-    var context = scope.ServiceProvider.GetRequiredService<ProductContext>();
+    var context = scope.ServiceProvider.GetRequiredService<UserContext>();
     await context.Database.EnsureDeletedAsync();
     await context.Database.EnsureCreatedAsync();
 }
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -42,8 +37,6 @@ if (app.Environment.IsDevelopment())
 app.UseCors(o => o.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 app.UseHttpsRedirection();
-
-//app.UseOcelot().Wait();
 
 app.UseAuthorization();
 

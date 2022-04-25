@@ -1,4 +1,4 @@
-namespace WebApplication2
+namespace OnlineWalmart.Gateway
 {
     public class WeatherForecast
     {

@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32210.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineWalmart", "WebApplication2\OnlineWalmart.csproj", "{7F20F811-4700-4C6F-BAD1-C154B2A3189F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineWalmart.Products", "WebApplication2\OnlineWalmart.Products.csproj", "{7F20F811-4700-4C6F-BAD1-C154B2A3189F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineWalmart.Users", "OnlineWalmart.Users\OnlineWalmart.Users.csproj", "{80D282C0-51F4-4CD5-9D9E-BC67B6602A6D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "Gateway\Gateway.csproj", "{E1AAA841-4BCF-48CE-A787-8744172DDA59}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineWalmart.Orders", "OnlineWalmart.Orders\OnlineWalmart.Orders.csproj", "{7B34CBD7-AC7C-4CC5-A118-DA6C6242C391}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnelineWalmart.Auth", "OnelineWalmart.Auth\OnelineWalmart.Auth.csproj", "{1559FD56-6DD4-4F60-82C2-2DD8093CEAA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{7F20F811-4700-4C6F-BAD1-C154B2A3189F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F20F811-4700-4C6F-BAD1-C154B2A3189F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F20F811-4700-4C6F-BAD1-C154B2A3189F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80D282C0-51F4-4CD5-9D9E-BC67B6602A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80D282C0-51F4-4CD5-9D9E-BC67B6602A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80D282C0-51F4-4CD5-9D9E-BC67B6602A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80D282C0-51F4-4CD5-9D9E-BC67B6602A6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1AAA841-4BCF-48CE-A787-8744172DDA59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1AAA841-4BCF-48CE-A787-8744172DDA59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1AAA841-4BCF-48CE-A787-8744172DDA59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1AAA841-4BCF-48CE-A787-8744172DDA59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B34CBD7-AC7C-4CC5-A118-DA6C6242C391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B34CBD7-AC7C-4CC5-A118-DA6C6242C391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B34CBD7-AC7C-4CC5-A118-DA6C6242C391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B34CBD7-AC7C-4CC5-A118-DA6C6242C391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1559FD56-6DD4-4F60-82C2-2DD8093CEAA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1559FD56-6DD4-4F60-82C2-2DD8093CEAA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1559FD56-6DD4-4F60-82C2-2DD8093CEAA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1559FD56-6DD4-4F60-82C2-2DD8093CEAA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
