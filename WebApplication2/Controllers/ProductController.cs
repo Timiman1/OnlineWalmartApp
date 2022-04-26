@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineWalmart.Products.DAL.Models;
 
 namespace OnlineWalmart.Products.Controllers
 {
@@ -33,11 +34,20 @@ namespace OnlineWalmart.Products.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ICollection<Product>>> AddProduct(Product Product)
+        public async Task<ActionResult<ICollection<Product>>> AddProduct(ProductModelToBePosted productModel)
         {
+            var product = new Product
+            {
+                Id = new Guid(),
+                Name = productModel.Name,
+                Description = productModel.Description,
+                Price = productModel.Price,
+                DeliveryInfo = productModel.DeliveryInfo
+            };
+
             try
             {
-                if (await _ProductRepository.AddNewProductAsync(Product))
+                if (await _ProductRepository.AddNewProductAsync(product))
                 {
                     if (!(await _context.SaveChangesAsync() > 0))
                     {
@@ -45,7 +55,7 @@ namespace OnlineWalmart.Products.Controllers
                     }
                 }
 
-                return StatusCode(201, Product);
+                return StatusCode(201, product);
             }
             catch (Exception ex)
             {
