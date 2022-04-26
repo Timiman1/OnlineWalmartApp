@@ -2,6 +2,7 @@
 using OnlineWalmart.Users.Context;
 using OnlineWalmart.Users.DAL.Entities;
 using OnlineWalmart.Users.DAL.Interfaces;
+using OnlineWalmart.Users.DAL.Models;
 
 namespace OnlineWalmart.Users.Controllers
 {
@@ -36,8 +37,17 @@ namespace OnlineWalmart.Users.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ICollection<User>>> AddUser(User user)
+        public async Task<ActionResult<ICollection<User>>> AddUser(UserModelToBePosted userModel)
         {
+            var user = new User
+            {
+                Id = new Guid(),
+                FirstName = userModel.FirstName,
+                LastName = userModel.LastName,
+                Email = userModel.Email,
+                DateOfBirth = userModel.DateOfBirth,
+                Phone = userModel.Phone,
+            };
             try
             {
                 if (await _userRepository.AddNewUserAsync(user))
