@@ -73,6 +73,10 @@
           "Port": 7028
         }
       ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "order_auth_scheme",
+        "AllowedScopes": []
+      },
       "UpstreamPathTemplate": "/Order/{id}",
       "UpstreamHttpMethod": [ "Get" ]
     },
